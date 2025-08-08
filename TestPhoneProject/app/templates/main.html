@@ -1,0 +1,34 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    {{ user }}
+    {% if user.is_authenticated %}
+    <h1>Ты зареган. И теперь у тебя крутой функционал! </h1>
+    <div>
+        <div class="counter" id="count">0</div>
+        <button id="incBtn">Нажми — число растёт</button>
+    </div>
+    <a href="{% url 'logout' %}">Выйти</a>
+    {% else %}
+    <h1>Ты НЕ зареган. Тебе нет функционала! (но ты можешь его получить)</h1>
+     <ul>
+         <li>
+             <a href="{% url 'reg' %}">Зарегаться</a>
+         </li>
+         <li>
+             <a href="{% url 'log' %}">Войти</a>
+         </li>
+     </ul>
+    {% endif %}
+
+    <script src="{% static 'js/main.js' %}"></script>
+
+</body>
+</html>
